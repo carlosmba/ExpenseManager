@@ -54,6 +54,8 @@
 		0CDC840E2CB9629D00294D64 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */; };
 		0CE076FE2CAA0D4A006C6019 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */; };
 		0CE077022CAA1EA3006C6019 /* CreateCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */; };
+		0CE4738C2CBA9C1500F7166A /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4738B2CBA9C1500F7166A /* CategoryListView.swift */; };
+		0CE4738F2CBAA61700F7166A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4738E2CBAA61700F7166A /* View+Extensions.swift */; };
 		0CE5268E2C6FC83D00452D01 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5268D2C6FC83D00452D01 /* AddCategoryView.swift */; };
 		0CEB5CA22C48B48600990CA1 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB5CA12C48B48500990CA1 /* RegisterView.swift */; };
 		0CEE40652C5012B80088E663 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE40642C5012B80088E663 /* AddTransactionView.swift */; };
@@ -112,6 +114,8 @@
 		0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryUseCase.swift; sourceTree = "<group>"; };
+		0CE4738B2CBA9C1500F7166A /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
+		0CE4738E2CBAA61700F7166A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		0CE5268D2C6FC83D00452D01 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		0CEB5CA12C48B48500990CA1 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0CEE40642C5012B80088E663 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 		0C2A8BAB2C458176007EE81B /* ScreenModules */ = {
 			isa = PBXGroup;
 			children = (
+				0CE473892CBA9BB100F7166A /* CategoryList */,
 				0CE5268B2C6FC81300452D01 /* AddCategory */,
 				0CEE40622C50128E0088E663 /* AddTransaction */,
 				0C1D89A12C4C14D600AC8271 /* Income */,
@@ -298,6 +303,7 @@
 		0C45637E2C49AA4B00BB52D2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0CE4738D2CBAA5E800F7166A /* Extensions */,
 				0C8D3C422CAB095F00BBA742 /* Theme */,
 				0C45637F2C49AAAB00BB52D2 /* Layer */,
 				0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */,
@@ -551,6 +557,30 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		0CE473892CBA9BB100F7166A /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				0CE4738A2CBA9BE900F7166A /* Presentation */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		0CE4738A2CBA9BE900F7166A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0CE4738B2CBA9C1500F7166A /* CategoryListView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0CE4738D2CBAA5E800F7166A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0CE4738E2CBAA61700F7166A /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0CE5268B2C6FC81300452D01 /* AddCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +721,7 @@
 				0CDA46262C76CC5400E936B1 /* TransactionRepositoryImpl.swift in Sources */,
 				0CE077022CAA1EA3006C6019 /* CreateCategoryUseCase.swift in Sources */,
 				0C5463472C5DD12C005F47DD /* HTTPClient.swift in Sources */,
+				0CE4738C2CBA9C1500F7166A /* CategoryListView.swift in Sources */,
 				0CBAF3412C5B360F00152CA5 /* APITransactionDataSource.swift in Sources */,
 				0CD9C8CD2C6676FD005AA343 /* CategoryDAO.swift in Sources */,
 				0CE5268E2C6FC83D00452D01 /* AddCategoryView.swift in Sources */,
@@ -716,6 +747,7 @@
 				0C5463502C5DD3A3005F47DD /* LocalTransactionDataSource.swift in Sources */,
 				0C5463452C5DD113005F47DD /* HTTPClientError.swift in Sources */,
 				0C1D899F2C4C083E00AC8271 /* HomeView.swift in Sources */,
+				0CE4738F2CBAA61700F7166A /* View+Extensions.swift in Sources */,
 				0C5198812C574B1F007EE701 /* FetchTransactionUseCase.swift in Sources */,
 				0C2A8BA02C458165007EE81B /* ContentView.swift in Sources */,
 				0C5463412C5D7894005F47DD /* TransactionDAOImpl.swift in Sources */,

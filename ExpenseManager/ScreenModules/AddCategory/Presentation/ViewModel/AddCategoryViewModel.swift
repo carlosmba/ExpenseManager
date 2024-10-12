@@ -39,7 +39,6 @@ final class AddCategoryViewModel {
         "tv",
         "camera",
         "tshirt",
-        "",
     ]
     
     private let createCategoryUseCase : CreateCategoryUseCase

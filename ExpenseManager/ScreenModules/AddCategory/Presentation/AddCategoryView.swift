@@ -57,39 +57,30 @@ struct AddCategoryView: View {
                         .foregroundStyle(.gray)
                         .padding(.top, 5)
                     
-                    Grid{
-                        ForEach(0..<3){row in
-                            GridRow{
-                                ForEach(0..<4){ column in
-                                    let image = viewModel.defaultIcons[row * 4 + column]
-                                    
-                                    if(image == "") {
-                                        ZStack{
-                                            Image(systemName: "ellipsis")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width:30)
-                                                .foregroundStyle(.white)
-                                        }
-                                        .padding(.all, 30)
-                                        .background(.yellow)
-                                        .clipShape(Circle())
-                                        .onTapGesture{
-                                            viewModel.isShowIconCatalog.toggle()
-                                        }
-                                    }else{
-                                        CategorySymbol(imageSystemName: image, color: viewModel.colorSelected, isSelected: viewModel.iconSelected == image)
-                                            .onTapGesture{
-                                                viewModel.iconSelected = image
-                                            }
-                                        
-                                    }
-                                    
-                                }
-                                
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4)){
+                       
+                        ForEach(viewModel.defaultIcons, id: \.self){ item in
+                            
+                            CategorySymbol(imageSystemName: item, color: viewModel.colorSelected, isSelected: viewModel.iconSelected == item)
+                            .onTapGesture{
+                                viewModel.iconSelected = item
                             }
+                             
+                            
                         }
-                        
+                        ZStack{
+                            Image(systemName: "ellipsis")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width:30)
+                                .foregroundStyle(.white)
+                        }
+                        .padding(.all, 30)
+                        .background(.yellow)
+                        .clipShape(Circle())
+                        .onTapGesture{
+                            viewModel.isShowIconCatalog.toggle()
+                        }
                         
                     }.navigationDestination(isPresented: $viewModel.isShowIconCatalog){
                         IconCatalogView(iconSelected: $viewModel.iconSelected, color: viewModel.colorSelected)
