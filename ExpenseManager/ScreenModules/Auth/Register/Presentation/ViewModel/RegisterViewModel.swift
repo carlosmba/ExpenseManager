@@ -6,3 +6,14 @@
 //
 
 import Foundation
+@Observable
+final class RegisterViewModel {
+    var email : String = ""
+    var name : String = ""
+    var phone : String = ""
+    var password : String = ""
+    
+    func signup(){
+        
+    }
+}

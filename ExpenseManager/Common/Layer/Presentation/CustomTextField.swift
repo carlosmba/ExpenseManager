@@ -7,17 +7,26 @@
 
 import SwiftUI
 
-struct TextFieldView: View {
+struct CustomTextField: View {
+    let imageSystemName : String
     let label : String
+    var color : Color = .white
     @Binding var value : String
     var body: some View {
-        TextField(text: $value){
-            Text(label)
-                .foregroundStyle(.white)
-                .bold()
+        HStack{
+            Image(systemName: imageSystemName)
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundStyle(color)
+            TextField(text: $value){
+                Text(label)
+                    .foregroundStyle(color)
+                    .bold()
+            }
+            .font(.title2)
+            .foregroundStyle(color)
         }
-        .font(.title2)
-        .foregroundStyle(.white)
+        
     }
 }
 

@@ -6,6 +6,8 @@
 //
 
 import Foundation
-enum LocalClientError : Error {
+enum LocalPersistenceError : Error {
     case generic
+    case read
+    case write
 }

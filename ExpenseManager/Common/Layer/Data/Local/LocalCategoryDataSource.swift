@@ -6,3 +6,10 @@
 //
 
 import Foundation
+protocol LocalCategoryDataSource {
+    func fetchCategoriesByType(type : String) async -> Result<[CategoryModel], LocalPersistenceError>
+    func createCategory(model : CategoryModel)async -> Result<Void, LocalPersistenceError>
+    func updateCategory(model : CategoryModel)async -> Result<Void, LocalPersistenceError>
+    func deleteCategory(categoryId : Int)async -> Result<Void, LocalPersistenceError>
+    
+}

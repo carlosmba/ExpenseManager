@@ -7,5 +7,5 @@
 
 import Foundation
 protocol APITransactionDataSource {
-    func fetchTransactionsByType(type : String) async -> Result<[TransactionModel], >
+    func fetchTransactionsByType(type : String) async -> Result<[TransactionDTO], HTTPClientError>
 }

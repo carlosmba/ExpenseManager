@@ -7,12 +7,135 @@
 
 import SwiftUI
 
-struct AddCategory: View {
+struct AddCategoryView: View {
+    @State private var viewModel : AddCategoryViewModel
+    @Environment(\.presentationMode) var presentationMode
+    
+    init(viewModel: AddCategoryViewModel) {
+        self._viewModel = State(initialValue: viewModel)
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            VStack{
+                
+                VStack(alignment: .leading){
+                    HStack{
+                        Image(systemName: viewModel.iconSelected)
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20,height: 20)
+                            .padding(10)
+                            .background(viewModel.colorSelected)
+                            .clipShape(Circle())
+                        TextField("Nombre de la Categoria", text: $viewModel.nameCategory)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    HStack{
+                        Text("Type:")
+                            .foregroundStyle(.gray)
+                        Picker("Tipo", selection: $viewModel.typeSelected){
+                            ForEach(TransactionType.allCases) { type in
+                                    Text(type.rawValue.capitalized)
+                                }
+                            
+                        }.frame(width: 120)
+                    }
+                    
+                    Text("Gasto Programado:")
+                        .foregroundStyle(.gray)
+                        .padding(.top, 5)
+                    HStack{
+                        TextField("Monto", text: $viewModel.amountMounth)
+                            .frame(width: 100)
+                            .textFieldStyle(.roundedBorder)
+                        Text("\(UserPreferences.currency) Por Mes")
+                    }
+                    
+                    Text("Simbolos:")
+                        .foregroundStyle(.gray)
+                        .padding(.top, 5)
+                    
+                    Grid{
+                        ForEach(0..<3){row in
+                            GridRow{
+                                ForEach(0..<4){ column in
+                                    let image = viewModel.defaultIcons[row * 4 + column]
+                                    
+                                    if(image == "") {
+                                        ZStack{
+                                            Image(systemName: "ellipsis")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width:30)
+                                                .foregroundStyle(.white)
+                                        }
+                                        .padding(.all, 30)
+                                        .background(.yellow)
+                                        .clipShape(Circle())
+                                        .onTapGesture{
+                                            viewModel.isShowIconCatalog.toggle()
+                                        }
+                                    }else{
+                                        CategorySymbol(imageSystemName: image, color: viewModel.colorSelected, isSelected: viewModel.iconSelected == image)
+                                            .onTapGesture{
+                                                viewModel.iconSelected = image
+                                            }
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                        }
+                        
+                        
+                    }.navigationDestination(isPresented: $viewModel.isShowIconCatalog){
+                        IconCatalogView(iconSelected: $viewModel.iconSelected, color: viewModel.colorSelected)
+                    }
+                }
+                
+                ColorPicker("Seleccionar Color:", selection: $viewModel.colorSelected)
+                
+                
+            
+                
+                
+                Button(action: {
+                    if(viewModel.isValidFields()){
+                        Task{
+                            let result = await viewModel.createCategory()
+                            if result {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                    }
+                }, label: {
+                    Text("Crear")
+                        .fontWeight(.heavy)
+                        .font(.title3)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(viewModel.isValidFields() ? .yellow : .gray.opacity(0.5))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                })
+                .padding(.top, 20)
+                
+                Spacer()
+            }
+            
+            .padding()
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(.blue)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .navigationTitle("Add Category")
+        }
+        
     }
 }
 
 #Preview {
-    AddCategory()
+    AddCategoryFactoryImpl().create(typeTransaction: .expense)
 }

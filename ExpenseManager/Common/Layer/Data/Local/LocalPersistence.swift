@@ -7,19 +7,11 @@
 
 import Foundation
 import SwiftData
-protocol LocalClient{
-    
+
+protocol LocalPersistence{
+    func transactionDao() -> TransactionDAO
+    func categoryDAO() -> CategoryDAO
 }
 
-final class SwiftDataContainer : LocalClient{
-    public static var shared : SwiftDataContainer = SwiftDataContainer()
-    private var context : ModelContext
-    
-    private init(){
-        let container = try! ModelContainer(for: TransactionModel.self, configurations: ModelConfiguration())
-        context = ModelContext(container)
-        
-    }
-    
-    
-}
+
+

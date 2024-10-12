@@ -6,3 +6,7 @@
 //
 
 import Foundation
+final class UserPreferences{
+   public static let currency = "Dolares"
+   public static let SymbolCurrency = "$"
+}

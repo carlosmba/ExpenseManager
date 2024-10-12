@@ -6,3 +6,9 @@
 //
 
 import Foundation
+protocol TransactionDAO {
+    func getTransactionsByType(type : String) -> Result<[TransactionModel], LocalPersistenceError>
+    func create(transaction : TransactionModel) -> Result<Void, LocalPersistenceError>
+    func update(transaction : TransactionModel) -> Result<Void, LocalPersistenceError>
+    func delete(id : Int) -> Result<Void, LocalPersistenceError>
+}

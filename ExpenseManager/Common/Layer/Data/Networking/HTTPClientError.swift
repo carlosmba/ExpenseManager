@@ -6,3 +6,6 @@
 //
 
 import Foundation
+enum HTTPClientError : Error{
+    case generic
+}

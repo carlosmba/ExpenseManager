@@ -6,3 +6,12 @@
 //
 
 import Foundation
+protocol FetchTransactionsUseCase {
+    func execute(_ type : TransactionType) async -> Result<[Transaction], ExpenseManagerErrorDomain>
+}
+
+final class FetchTransactionUseCaseImpl {
+    
+    
+    
+}

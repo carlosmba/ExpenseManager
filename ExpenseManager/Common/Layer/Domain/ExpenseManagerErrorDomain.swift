@@ -6,3 +6,6 @@
 //
 
 import Foundation
+enum ExpenseManagerErrorDomain : Error {
+    case generic
+}

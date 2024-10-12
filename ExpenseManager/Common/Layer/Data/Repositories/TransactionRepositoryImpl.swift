@@ -6,3 +6,11 @@
 //
 
 import Foundation
+final class TransactionRepositoryImpl : TransactionRepository{
+    private let localTransactionDataSource : LocalTransactionDataSource
+    init(localTransactionDataSource: LocalTransactionDataSource) {
+        self.localTransactionDataSource = localTransactionDataSource
+    }
+    
+    
+}
