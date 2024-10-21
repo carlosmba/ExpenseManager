@@ -13,7 +13,7 @@ final class SwiftDataContainer : LocalPersistence{
     private var context : ModelContext
     
     private init(){
-        let container = try! ModelContainer(for: TransactionModel.self, configurations: ModelConfiguration())
+        let container = try! ModelContainer(for: TransactionModel.self, CategoryModel.self, configurations: ModelConfiguration())
         context = ModelContext(container)
         
     }

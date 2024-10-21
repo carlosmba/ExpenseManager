@@ -88,6 +88,7 @@ struct AddCategoryView: View {
                 }
                 
                 ColorPicker("Seleccionar Color:", selection: $viewModel.colorSelected)
+                Text(viewModel.colorSelected.description)
                 
                 
             

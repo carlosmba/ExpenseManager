@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email : String = ""
-    @State var password : String = ""
-    @State var isPresented : Bool = false
+    @State private var viewModel : LoginViewModel = LoginViewModel()
     var body: some View {
         NavigationStack {
             ZStack{
@@ -26,7 +24,7 @@ struct LoginView: View {
                     
                     VStack{
                         
-                        CustomTextField(imageSystemName: "envelope.circle",label: "Email", value: $email)
+                        CustomTextField(imageSystemName: "envelope.circle",label: "Email", value: $viewModel.email)
                         
                         Divider()
                             .background(.white)
@@ -35,7 +33,7 @@ struct LoginView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .foregroundStyle(.white)
-                            SecureField(text: $password){
+                            SecureField(text: $viewModel.password){
                                 Text("Password")
                                     .foregroundStyle(.white)
                                     .bold()
@@ -54,7 +52,7 @@ struct LoginView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     
                     Button(action: {
-                        isPresented.toggle()
+                        viewModel.isPresented.toggle()
                     }, label: {
                         Text("Login")
                             .fontWeight(.heavy)
@@ -66,7 +64,7 @@ struct LoginView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                     })
                     .padding(.top, 20)
-                    .navigationDestination(isPresented: $isPresented, destination: {
+                    .navigationDestination(isPresented: $viewModel.isPresented, destination: {
                         HomeView()
                     })
                     

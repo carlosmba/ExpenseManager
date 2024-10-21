@@ -10,5 +10,6 @@ struct Category{
     var id : Int
     var name : String
     var image : String
+    var color : String
     var isSelected = false
 }

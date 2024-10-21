@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class CategoryModel{
-    @Attribute(.unique) var id : Int = 0
+    @Attribute(.unique) var id : Int
     var name : String
     var type : String
     var monthlyAmount : Double
@@ -19,7 +19,8 @@ final class CategoryModel{
     @Relationship(deleteRule: .cascade, inverse: \TransactionModel.category)
     var transactions : [TransactionModel] = [TransactionModel]()
     
-    init(name: String, type: String, monthlyAmount: Double, icon: String, color: String) {
+    init(id: Int = 0, name: String, type: String, monthlyAmount: Double, icon: String, color: String) {
+        self.id = id
         self.name = name
         self.type = type
         self.monthlyAmount = monthlyAmount
