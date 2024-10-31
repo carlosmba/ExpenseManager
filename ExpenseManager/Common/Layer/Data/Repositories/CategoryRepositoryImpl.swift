@@ -8,7 +8,6 @@
 import Foundation
 final class CategoryRepositoryImpl : CategoryRepository{
     
-    
     private let localCategoryDataSource : LocalCategoryDataSource
     
     init(localCategoryDataSource: LocalCategoryDataSource) {
@@ -16,7 +15,7 @@ final class CategoryRepositoryImpl : CategoryRepository{
     }
     
     func createCategory(category: CategoryModel) async -> Result<Void, ExpenseManagerErrorDomain> {
-        var result = await localCategoryDataSource.createCategory(model: category)
+        let result = await localCategoryDataSource.createCategory(model: category)
         
         guard case .success(let data) = result else {
             return .failure(.generic)
@@ -26,7 +25,7 @@ final class CategoryRepositoryImpl : CategoryRepository{
     }
     
     func getCategoriesByType(type: String) async -> Result<[CategoryModel], ExpenseManagerErrorDomain> {
-        var result = await localCategoryDataSource.fetchCategoriesByType(type: type)
+        let result = await localCategoryDataSource.fetchCategoriesByType(type: type)
         
         guard case .success(let data) = result else {
             return .failure(.generic)
@@ -34,4 +33,6 @@ final class CategoryRepositoryImpl : CategoryRepository{
 
         return .success(data)
     }
+    
+   
 }

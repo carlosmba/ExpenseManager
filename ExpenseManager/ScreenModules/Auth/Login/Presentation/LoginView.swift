@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var viewModel : LoginViewModel = LoginViewModel()
+    @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared))))
     var body: some View {
         NavigationStack {
             ZStack{
+                
                 VStack{
                     Image("icon_main")
                         .resizable()
@@ -80,12 +81,26 @@ struct LoginView: View {
                             .foregroundStyle(.red)
                     }
                     
-                    Text("Continuar sin cuenta")
-                        .foregroundStyle(.white)
-                        .padding(.top, 2)
+                    Button(action: {
+                        
+                    }){
+                        Text("Continuar sin cuenta")
+                            .foregroundStyle(.white)
+                            .padding(.top, 2)
+                    }
                 }
                 .safeAreaPadding(.vertical, 50)
                 .padding()
+                
+                if(viewModel.isLoading){
+                    ZStack{
+                        Color(.black)
+                            .opacity(0.2)
+                            .ignoresSafeArea()
+                        ProgressView()
+                            .scaleEffect(3)
+                    }
+                }
                 
             }.background{
                 Image("login_background")
@@ -96,9 +111,16 @@ struct LoginView: View {
                     
                     
         }.ignoresSafeArea()
+            
+            
+            
         }
+        
+        
             
     }
+    
+    
 }
 
 #Preview {

@@ -11,4 +11,5 @@ protocol CategoryDAO {
     func create(model : CategoryModel) -> Result<Void, LocalPersistenceError>
     func update(model : CategoryModel) -> Result<Void, LocalPersistenceError>
     func delete(id : Int) -> Result<Void, LocalPersistenceError>
+    func deleteAll() -> Result<Void, LocalPersistenceError>
 }

@@ -11,11 +11,16 @@ final class SwiftDataContainer : LocalPersistence{
     
     public static var shared : SwiftDataContainer = SwiftDataContainer()
     private var context : ModelContext
+    private let container : ModelContainer
     
     private init(){
-        let container = try! ModelContainer(for: TransactionModel.self, CategoryModel.self, configurations: ModelConfiguration())
+        self.container = try! ModelContainer(for: TransactionModel.self, CategoryModel.self, configurations: ModelConfiguration())
         context = ModelContext(container)
         
+    }
+    
+    func deleteAllData() {
+        container.deleteAllData()
     }
     
     func transactionDao() -> TransactionDAO {

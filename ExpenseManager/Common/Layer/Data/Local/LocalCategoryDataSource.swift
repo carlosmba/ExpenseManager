@@ -11,5 +11,6 @@ protocol LocalCategoryDataSource {
     func createCategory(model : CategoryModel)async -> Result<Void, LocalPersistenceError>
     func updateCategory(model : CategoryModel)async -> Result<Void, LocalPersistenceError>
     func deleteCategory(categoryId : Int)async -> Result<Void, LocalPersistenceError>
+    func deleteAll() -> Result<Void, LocalPersistenceError>
     
 }

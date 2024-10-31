@@ -9,6 +9,8 @@ import Foundation
 import SwiftData
 final class CategoryDAOImpl : CategoryDAO{
     
+    
+    
     private let context : ModelContext
     
     init(context: ModelContext) {
@@ -73,6 +75,16 @@ final class CategoryDAOImpl : CategoryDAO{
         }
     }
     
+    
+    func deleteAll() -> Result<Void, LocalPersistenceError> {
+        do {
+            try context.delete(model: CategoryModel.self)
+            return .success(Void())
+        }catch {
+            return .failure(.write)
+        }
+        
+    }
     
     
     

@@ -7,9 +7,6 @@
 
 import Foundation
 final class LocalCategoryDataSourceImpl : LocalCategoryDataSource{
-    
-    
-    
     private let localPersistence : LocalPersistence
     init(localPersistence: LocalPersistence) {
         self.localPersistence = localPersistence
@@ -29,6 +26,10 @@ final class LocalCategoryDataSourceImpl : LocalCategoryDataSource{
     
     func deleteCategory(categoryId: Int) async -> Result<Void, LocalPersistenceError> {
         return localPersistence.categoryDAO().delete(id: categoryId)
+    }
+    
+    func deleteAll() -> Result<Void, LocalPersistenceError> {
+        return localPersistence.categoryDAO().deleteAll()
     }
     
     
