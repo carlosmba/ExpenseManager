@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared))))
+    @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared))), errorMapper: ExpenseManagerPresentableErrorMapper())
     var body: some View {
         NavigationStack {
             ZStack{
