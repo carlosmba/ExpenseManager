@@ -9,9 +9,11 @@ import Foundation
 final class CategoryRepositoryImpl : CategoryRepository{
     
     private let localCategoryDataSource : LocalCategoryDataSource
+    private let mapper : CategoryMapper
     
-    init(localCategoryDataSource: LocalCategoryDataSource) {
+    init(localCategoryDataSource: LocalCategoryDataSource, mapper : CategoryMapper) {
         self.localCategoryDataSource = localCategoryDataSource
+        self.mapper = mapper
     }
     
     func createCategory(category: CategoryModel) async -> Result<Void, ExpenseManagerErrorDomain> {
@@ -24,14 +26,14 @@ final class CategoryRepositoryImpl : CategoryRepository{
         return .success(data)
     }
     
-    func getCategoriesByType(type: String) async -> Result<[CategoryModel], ExpenseManagerErrorDomain> {
+    func getCategoriesByType(type: String) async -> Result<[Category], ExpenseManagerErrorDomain> {
         let result = await localCategoryDataSource.fetchCategoriesByType(type: type)
         
         guard case .success(let data) = result else {
             return .failure(.generic)
         }
 
-        return .success(data)
+        return .success(mapper.map(models: data))
     }
     
    

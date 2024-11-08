@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C010A9E2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */; };
 		0C1D899F2C4C083E00AC8271 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D899E2C4C083E00AC8271 /* HomeView.swift */; };
 		0C1D89A52C4C14F500AC8271 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */; };
 		0C1D89A72C4C150400AC8271 /* IncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D89A62C4C150400AC8271 /* IncomeView.swift */; };
@@ -43,6 +44,7 @@
 		0C8D3C442CAB097900BBA742 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D3C432CAB097900BBA742 /* ColorScheme.swift */; };
 		0CAD625E2C5FF98100A9C9EF /* LocalTransactionDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAD625D2C5FF98100A9C9EF /* LocalTransactionDataSourceImpl.swift */; };
 		0CBAF3412C5B360F00152CA5 /* APITransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBAF3402C5B360F00152CA5 /* APITransactionDataSource.swift */; };
+		0CBD70DE2CDD0B7900840C97 /* CategoryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD70DD2CDD0B7900840C97 /* CategoryMapper.swift */; };
 		0CC916A62C52E74200BECC03 /* TransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC916A52C52E74200BECC03 /* TransactionRow.swift */; };
 		0CCCED1B2C8E959C00F07737 /* IconCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCED1A2C8E959C00F07737 /* IconCatalogView.swift */; };
 		0CD1D7C42CD2838700E9ADBD /* SaveDefaulValuesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1D7C32CD2838700E9ADBD /* SaveDefaulValuesUseCase.swift */; };
@@ -68,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesByTypeUseCase.swift; sourceTree = "<group>"; };
 		0C1D899E2C4C083E00AC8271 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
 		0C1D89A62C4C150400AC8271 /* IncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeView.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		0C8D3C432CAB097900BBA742 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		0CAD625D2C5FF98100A9C9EF /* LocalTransactionDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTransactionDataSourceImpl.swift; sourceTree = "<group>"; };
 		0CBAF3402C5B360F00152CA5 /* APITransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITransactionDataSource.swift; sourceTree = "<group>"; };
+		0CBD70DD2CDD0B7900840C97 /* CategoryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapper.swift; sourceTree = "<group>"; };
 		0CC916A52C52E74200BECC03 /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
 		0CCCED1A2C8E959C00F07737 /* IconCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCatalogView.swift; sourceTree = "<group>"; };
 		0CD1D7C32CD2838700E9ADBD /* SaveDefaulValuesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDefaulValuesUseCase.swift; sourceTree = "<group>"; };
@@ -142,6 +146,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C010A9B2CDBCE4F00CDDF37 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0C010A9C2CDBCE5700CDDF37 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0C010A9C2CDBCE5700CDDF37 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		0C1D899C2C4C082300AC8271 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +546,7 @@
 			children = (
 				0CDA46252C76CC5400E936B1 /* TransactionRepositoryImpl.swift */,
 				0CDA46292C76CD1000E936B1 /* CategoryRepositoryImpl.swift */,
+				0CBD70DD2CDD0B7900840C97 /* CategoryMapper.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -658,6 +679,7 @@
 		0CEE40622C50128E0088E663 /* AddTransaction */ = {
 			isa = PBXGroup;
 			children = (
+				0C010A9B2CDBCE4F00CDDF37 /* Domain */,
 				0CEE40632C5012A40088E663 /* Presentation */,
 			);
 			path = AddTransaction;
@@ -787,6 +809,7 @@
 				0C5463452C5DD113005F47DD /* HTTPClientError.swift in Sources */,
 				0C1D899F2C4C083E00AC8271 /* HomeView.swift in Sources */,
 				0CE4738F2CBAA61700F7166A /* View+Extensions.swift in Sources */,
+				0CBD70DE2CDD0B7900840C97 /* CategoryMapper.swift in Sources */,
 				0C5198812C574B1F007EE701 /* FetchTransactionUseCase.swift in Sources */,
 				0C2A8BA02C458165007EE81B /* ContentView.swift in Sources */,
 				0C5463412C5D7894005F47DD /* TransactionDAOImpl.swift in Sources */,
@@ -796,6 +819,7 @@
 				0CCCED1B2C8E959C00F07737 /* IconCatalogView.swift in Sources */,
 				0CDA46242C76CC3800E936B1 /* TransactionRepository.swift in Sources */,
 				0C2A8B9E2C458165007EE81B /* ExpenseManagerApp.swift in Sources */,
+				0C010A9E2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift in Sources */,
 				0C51987C2C574553007EE701 /* Transaction.swift in Sources */,
 				0C51987E2C5746CB007EE701 /* ExpenseManagerErrorDomain.swift in Sources */,
 				0C6F3C622C97D38E005F8E2F /* Category.swift in Sources */,

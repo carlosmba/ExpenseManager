@@ -11,5 +11,6 @@ struct Category{
     var name : String
     var image : String
     var color : String
+    var type : TransactionType
     var isSelected = false
 }

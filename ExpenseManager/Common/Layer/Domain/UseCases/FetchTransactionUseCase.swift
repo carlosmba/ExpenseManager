@@ -10,7 +10,7 @@ protocol FetchTransactionsUseCase {
     func execute(_ type : TransactionType) async -> Result<[Transaction], ExpenseManagerErrorDomain>
 }
 
-final class FetchTransactionUseCaseImpl {
+final class FetchTransactionUseCaseImpl  {
     
     
     

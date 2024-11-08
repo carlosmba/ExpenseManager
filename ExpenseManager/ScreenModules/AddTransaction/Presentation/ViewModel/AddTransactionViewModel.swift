@@ -13,10 +13,47 @@ final class AddTransactionViewModel {
     var transactionType : TransactionType
     var categorySelected : Int = 3
     var comment : String = ""
+    var categories : [Category] = [Category]()
+    var errorMessage : String?
     
-    init(type : TransactionType) {
+    private let getCategoriesByTypeUseCase : GetCategoriesByTypeUseCase
+    private let errorMapper : ExpenseManagerPresentableErrorMapper
+    
+    init(type : TransactionType, getCategoriesByType : GetCategoriesByTypeUseCase, errorMapper : ExpenseManagerPresentableErrorMapper) {
         self.transactionType = type
+        self.getCategoriesByTypeUseCase = getCategoriesByType
+        self.errorMapper = errorMapper
+        
     }
+    
+    func onAppears(){
+        
+    }
+    
+    func getCategories(){
+        Task{
+            let result = await getCategoriesByTypeUseCase.execute(type: transactionType.rawValue)
+            switch result {
+            case .success(let categories):
+                Task { @MainActor in
+                    self.categories = categories
+                }
+                break
+            case .failure(let error):
+                handleError(error: error)
+                break
+            }
+        }
+    }
+    
+    
+    func handleError(error : ExpenseManagerErrorDomain){
+        Task{ @MainActor in
+            self.errorMessage = errorMapper.map(error: error)
+        }
+    }
+    
+    
     
     
     
