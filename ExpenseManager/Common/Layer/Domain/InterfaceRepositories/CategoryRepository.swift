@@ -8,5 +8,6 @@
 import Foundation
 protocol CategoryRepository {
     func createCategory(category : CategoryModel) async -> Result<Void, ExpenseManagerErrorDomain>
+    func createCategories(categories : [CategoryModel]) async -> Result<Void, ExpenseManagerErrorDomain>
     func getCategoriesByType(type : String) async -> Result<[Category], ExpenseManagerErrorDomain>
 }

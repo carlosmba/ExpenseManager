@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 struct Category{
     var id : Int
     var name : String
@@ -13,4 +14,8 @@ struct Category{
     var color : String
     var type : TransactionType
     var isSelected = false
+    
+    var colorSwift : Color {
+        return Color(fromHex: self.color)
+    }
 }

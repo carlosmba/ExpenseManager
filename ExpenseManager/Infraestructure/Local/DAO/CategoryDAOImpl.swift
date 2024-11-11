@@ -10,7 +10,6 @@ import SwiftData
 final class CategoryDAOImpl : CategoryDAO{
     
     
-    
     private let context : ModelContext
     
     init(context: ModelContext) {
@@ -19,7 +18,7 @@ final class CategoryDAOImpl : CategoryDAO{
     
     func getAllCategoriesByType(type: String) -> Result<[CategoryModel], LocalPersistenceError> {
         let categoryType = type
-        var descriptor = FetchDescriptor<CategoryModel>(
+        let descriptor = FetchDescriptor<CategoryModel>(
             predicate: #Predicate<CategoryModel> { $0.type == categoryType  }
         )
         do {
@@ -38,6 +37,22 @@ final class CategoryDAOImpl : CategoryDAO{
         }catch {
             return .failure(.write)
         }
+    }
+    
+    func createAll(models: [CategoryModel]) async -> Result<Void, LocalPersistenceError> {
+        do{
+            try context.transaction {
+                for item in models {
+                    context.insert(item)
+                }
+                try context.save()
+            }
+            return .success(Void())
+        }catch {
+            return .failure(.write)
+        }
+        
+        
     }
     
     func update(model: CategoryModel) -> Result<Void, LocalPersistenceError> {
@@ -76,12 +91,11 @@ final class CategoryDAOImpl : CategoryDAO{
     }
     
     
-    func deleteAll() -> Result<Void, LocalPersistenceError> {
+    func deleteAll() {
         do {
             try context.delete(model: CategoryModel.self)
-            return .success(Void())
         }catch {
-            return .failure(.write)
+            print(error.localizedDescription)
         }
         
     }

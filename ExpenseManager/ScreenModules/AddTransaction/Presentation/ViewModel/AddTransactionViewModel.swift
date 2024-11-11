@@ -11,7 +11,7 @@ import Foundation
 final class AddTransactionViewModel {
     var amount : Double = 0
     var transactionType : TransactionType
-    var categorySelected : Int = 3
+    var categorySelected : Int = 0
     var comment : String = ""
     var categories : [Category] = [Category]()
     var errorMessage : String?
@@ -27,7 +27,7 @@ final class AddTransactionViewModel {
     }
     
     func onAppears(){
-        
+        getCategories()
     }
     
     func getCategories(){

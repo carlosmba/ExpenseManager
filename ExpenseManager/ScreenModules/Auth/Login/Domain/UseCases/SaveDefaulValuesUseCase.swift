@@ -19,14 +19,7 @@ final class SaveDefaulValuesUseCaseImpl : SaveDefaulValuesUseCase{
         self.categoryRepository = categoryRepository
     }
     func execute(categories : [CategoryModel]) async -> Result<Void, ExpenseManagerErrorDomain> {
-        for item in categories {
-            let result = await categoryRepository.createCategory(category: item)
-            guard case .success(let success) = result else {
-                return .failure(.generic)
-            }
-
-        }
-        return .success(Void())
+        return await categoryRepository.createCategories(categories: categories)
     }
     
     

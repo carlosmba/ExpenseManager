@@ -7,7 +7,6 @@
 
 import Foundation
 final class CategoryRepositoryImpl : CategoryRepository{
-    
     private let localCategoryDataSource : LocalCategoryDataSource
     private let mapper : CategoryMapper
     
@@ -34,6 +33,18 @@ final class CategoryRepositoryImpl : CategoryRepository{
         }
 
         return .success(mapper.map(models: data))
+    }
+    
+    
+    func createCategories(categories: [CategoryModel]) async -> Result<Void, ExpenseManagerErrorDomain> {
+        localCategoryDataSource.deleteAll()
+        let result = await localCategoryDataSource.createCategories(categories)
+        
+        guard case .success(let data) = result else {
+            return .failure(.generic)
+        }
+
+        return .success(data)
     }
     
    

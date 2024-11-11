@@ -16,6 +16,7 @@ final class SwiftDataContainer : LocalPersistence{
     private init(){
         self.container = try! ModelContainer(for: TransactionModel.self, CategoryModel.self, configurations: ModelConfiguration())
         context = ModelContext(container)
+        context.autosaveEnabled = false
         
     }
     

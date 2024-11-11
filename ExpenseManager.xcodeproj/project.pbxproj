@@ -60,6 +60,7 @@
 		0CDC840E2CB9629D00294D64 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */; };
 		0CE076FE2CAA0D4A006C6019 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */; };
 		0CE077022CAA1EA3006C6019 /* CreateCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */; };
+		0CE4633B2CE2600D0017D153 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4633A2CE2600D0017D153 /* Color+Extensions.swift */; };
 		0CE4738C2CBA9C1500F7166A /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4738B2CBA9C1500F7166A /* CategoryListView.swift */; };
 		0CE4738F2CBAA61700F7166A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4738E2CBAA61700F7166A /* View+Extensions.swift */; };
 		0CE5268E2C6FC83D00452D01 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5268D2C6FC83D00452D01 /* AddCategoryView.swift */; };
@@ -126,6 +127,7 @@
 		0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryUseCase.swift; sourceTree = "<group>"; };
+		0CE4633A2CE2600D0017D153 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		0CE4738B2CBA9C1500F7166A /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		0CE4738E2CBAA61700F7166A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		0CE5268D2C6FC83D00452D01 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE4738E2CBAA61700F7166A /* View+Extensions.swift */,
+				0CE4633A2CE2600D0017D153 /* Color+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				0C54634E2C5DD2CF005F47DD /* SwiftDataContainer.swift in Sources */,
 				0CD37FBC2CBC28BF00C9CFF4 /* DefaultValues.swift in Sources */,
 				0CEB5CA22C48B48600990CA1 /* RegisterView.swift in Sources */,
+				0CE4633B2CE2600D0017D153 /* Color+Extensions.swift in Sources */,
 				0C8D3C442CAB097900BBA742 /* ColorScheme.swift in Sources */,
 				0C5198832C574B82007EE701 /* TransactionType.swift in Sources */,
 				0C69FD652C6BD54500D15347 /* CategoryDAOImpl.swift in Sources */,

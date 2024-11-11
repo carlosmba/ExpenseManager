@@ -63,7 +63,7 @@ struct ExpenseView: View {
                 
             }.padding()
                 .navigationDestination(isPresented: $isShowAddTransaction){
-                    //AddTransactionView(type: .expense)
+                    AddTransactionView(viewModel: AddTransactionViewModel(type: .expense, getCategoriesByType: GetCategoriesByTypeUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared), mapper: CategoryMapper())), errorMapper: ExpenseManagerPresentableErrorMapper()))
                 }
                 
         }

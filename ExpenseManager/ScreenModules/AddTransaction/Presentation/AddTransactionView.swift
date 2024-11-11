@@ -41,8 +41,8 @@ struct AddTransactionView: View {
                             .padding(.top, 10)
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4)){
-                            ForEach(Array(1...7), id:\.self){ item in
-                                CategoryItem(imageSystemName: "house", name: "Casa", color: .red, isSelected: viewModel.categorySelected == 1)
+                            ForEach(viewModel.categories.prefix(7), id:\.id){ item in
+                                CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: viewModel.categorySelected == item.id)
                             }
                             VStack(alignment: .center){
                                 Image(systemName: "plus")
@@ -96,9 +96,12 @@ struct AddTransactionView: View {
             
             
         }
+        .onAppear{
+            viewModel.onAppears()
+        }
     }
 }
 
 #Preview {
-    AddTransactionView(viewModel: AddTransactionViewModel(type: .expense))
+    AddTransactionView(viewModel: AddTransactionViewModel(type: .expense, getCategoriesByType: GetCategoriesByTypeUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared), mapper: CategoryMapper())), errorMapper: ExpenseManagerPresentableErrorMapper()))
 }

@@ -26,8 +26,9 @@ final class LoginViewModel{
         isLoading = true
         Task{ [weak self] in
             let result = await self?.saveDefaultCategoriesUseCase.execute(categories: DefaultValues.defaultCategories )
-            switch result {
-            case .success: 
+            guard let response = result else {return}
+            switch response {
+            case .success:
                 Task{ @MainActor [weak self] in
                     self?.isLoading = false
                     self?.isPresented = true
@@ -35,8 +36,7 @@ final class LoginViewModel{
                 break
             case .failure(let error):
                 self?.handleError(error: error)
-                return
-            default: break
+                break
             }
             
             

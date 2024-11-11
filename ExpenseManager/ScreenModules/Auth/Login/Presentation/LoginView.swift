@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared))), errorMapper: ExpenseManagerPresentableErrorMapper())
+    @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared), mapper: CategoryMapper())), errorMapper: ExpenseManagerPresentableErrorMapper())
     var body: some View {
         NavigationStack {
             ZStack{
@@ -82,7 +82,7 @@ struct LoginView: View {
                     }
                     
                     Button(action: {
-                        
+                        viewModel.saveValuesDefault()
                     }){
                         Text("Continuar sin cuenta")
                             .foregroundStyle(.white)

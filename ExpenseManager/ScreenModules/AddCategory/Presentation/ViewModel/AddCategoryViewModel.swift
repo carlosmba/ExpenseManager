@@ -49,12 +49,12 @@ final class AddCategoryViewModel {
     
     public func createCategory() async -> Bool{
         self.showSpinnerLoading = true
-        let model = CategoryModel(name: nameCategory, type: typeSelected.rawValue, monthlyAmount: Double(amountMounth) ?? 0, icon: iconSelected, color: colorSelected.description)
+        let model = CategoryModel(name: nameCategory, type: typeSelected.rawValue, monthlyAmount: Double(amountMounth) ?? 0, icon: iconSelected, color: colorSelected.toString())
         
         
         let result = await self.createCategoryUseCase.execute(model: model)
             
-        guard case let .success(success) = result else {
+        guard case .success(_) = result else {
             Task{ @MainActor in
                 self.showSpinnerLoading = false
                 self.messageError = "Ocurrio un error"

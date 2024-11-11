@@ -28,11 +28,12 @@ final class LocalCategoryDataSourceImpl : LocalCategoryDataSource{
         return localPersistence.categoryDAO().delete(id: categoryId)
     }
     
-    func deleteAll() -> Result<Void, LocalPersistenceError> {
-        return localPersistence.categoryDAO().deleteAll()
+    func deleteAll(){
+        localPersistence.categoryDAO().deleteAll()
     }
     
-    
-    
+    func createCategories(_ models: [CategoryModel]) async -> Result<Void, LocalPersistenceError> {
+        return await localPersistence.categoryDAO().createAll(models: models)
+    }
     
 }
