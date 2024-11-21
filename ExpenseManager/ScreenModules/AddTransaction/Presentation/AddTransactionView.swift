@@ -25,6 +25,9 @@ struct AddTransactionView: View {
                         Text("Icomes").tag(TransactionType.income)
                         Text("Expenses").tag(TransactionType.expense)
                     }.pickerStyle(.segmented)
+                        .onChange(of: viewModel.transactionType, initial: false ){
+                            viewModel.getCategories()
+                        }
                     Text("Cuenta").foregroundStyle(.gray)
                         .padding(.top, 10)
                     Text("Principal")
@@ -42,6 +45,9 @@ struct AddTransactionView: View {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4)){
                         ForEach(viewModel.categories.prefix(7), id:\.id){ item in
                             CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: viewModel.categorySelected == item.id)
+                                .onTapGesture {
+                                    viewModel.categorySelected = item.id
+                                }
                         }
                         VStack(alignment: .center){
                             Image(systemName: "plus")
@@ -80,7 +86,7 @@ struct AddTransactionView: View {
                     Spacer()
                 }
             }.navigationDestination(isPresented: $viewModel.isShowCategoryList){
-                CategoryListView()
+                CategoryListView(categories: viewModel.categories, categorySelected: $viewModel.categorySelected)
             }
             
             

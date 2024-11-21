@@ -8,22 +8,19 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    let items = Array(1...20) // Array de ejemplo con 30 elementos
-    
-    // Define las columnas del Grid
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    let categories : [Category] // Array de ejemplo con 30 elementos
+    let columns = 4
+    @Binding var categorySelected : Int
     
     var body: some View {
         NavigationStack {
             ScrollView{
-                LazyVGrid(columns:columns){
-                    ForEach(items, id: \.self) { item in
-                        CategoryItem(imageSystemName: "house", name: "Casa", color: .red, isSelected:false)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: columns)){
+                    ForEach(categories, id: \.id) { item in
+                        CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: item.id == categorySelected)
+                            .onTapGesture {
+                                categorySelected = item.id
+                            }
                         
                     }
                 }
@@ -32,6 +29,4 @@ struct CategoryListView: View {
     }
     
 }
-#Preview {
-    CategoryListView()
-}
+

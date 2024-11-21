@@ -11,6 +11,7 @@ import Foundation
 final class AddTransactionViewModel {
     var amount : Double = 0
     var transactionType : TransactionType
+    let initType : TransactionType
     var categorySelected : Int = 0
     var comment : String = ""
     var categories : [Category] = [Category]()
@@ -22,12 +23,14 @@ final class AddTransactionViewModel {
     
     init(type : TransactionType, getCategoriesByType : GetCategoriesByTypeUseCase, errorMapper : ExpenseManagerPresentableErrorMapper) {
         self.transactionType = type
+        self.initType = type
         self.getCategoriesByTypeUseCase = getCategoriesByType
         self.errorMapper = errorMapper
         
     }
     
     func onAppears(){
+        self.transactionType = initType
         getCategories()
     }
     
