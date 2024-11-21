@@ -15,6 +15,7 @@ final class AddTransactionViewModel {
     var comment : String = ""
     var categories : [Category] = [Category]()
     var errorMessage : String?
+    var isShowCategoryList = false
     
     private let getCategoriesByTypeUseCase : GetCategoriesByTypeUseCase
     private let errorMapper : ExpenseManagerPresentableErrorMapper

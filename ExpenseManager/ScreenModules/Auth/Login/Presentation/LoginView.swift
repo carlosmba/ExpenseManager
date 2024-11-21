@@ -10,7 +10,11 @@ import SwiftUI
 struct LoginView: View {
     @State private var viewModel : LoginViewModel = LoginViewModel(saveDefaultCategoriesUseCase: SaveDefaulValuesUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared), mapper: CategoryMapper())), errorMapper: ExpenseManagerPresentableErrorMapper())
     var body: some View {
-        NavigationStack {
+        if viewModel.isPresented{
+            HomeView()
+                .transition(.move(edge: .leading))
+                .animation(.easeInOut, value: UUID())
+        }else{
             ZStack{
                 
                 VStack{
@@ -53,7 +57,6 @@ struct LoginView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     
                     Button(action: {
-                        viewModel.isPresented.toggle()
                     }, label: {
                         Text("Login")
                             .fontWeight(.heavy)
@@ -65,9 +68,6 @@ struct LoginView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                     })
                     .padding(.top, 20)
-                    .navigationDestination(isPresented: $viewModel.isPresented, destination: {
-                        HomeView()
-                    })
                     
                     
                         
@@ -82,7 +82,13 @@ struct LoginView: View {
                     }
                     
                     Button(action: {
-                        viewModel.saveValuesDefault()
+                        Task{
+                            await viewModel.saveValuesDefault()
+                            withAnimation{
+                                self.viewModel.isPresented.toggle()
+                            }
+                        }
+                        
                     }){
                         Text("Continuar sin cuenta")
                             .foregroundStyle(.white)
@@ -108,13 +114,12 @@ struct LoginView: View {
                     .scaledToFill()
                     .background(.black)
                     .opacity(0.7)
-                    
-                    
-        }.ignoresSafeArea()
-            
-            
-            
+                
+                
+                
+            }
         }
+        
         
         
             

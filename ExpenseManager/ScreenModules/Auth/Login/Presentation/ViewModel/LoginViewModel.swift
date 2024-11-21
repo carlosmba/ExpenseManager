@@ -22,26 +22,23 @@ final class LoginViewModel{
         self.errorMapper = errorMapper
     }
     
-    public func saveValuesDefault(){
-        isLoading = true
-        Task{ [weak self] in
-            let result = await self?.saveDefaultCategoriesUseCase.execute(categories: DefaultValues.defaultCategories )
-            guard let response = result else {return}
-            switch response {
-            case .success:
-                Task{ @MainActor [weak self] in
-                    self?.isLoading = false
-                    self?.isPresented = true
-                }
-                break
-            case .failure(let error):
-                self?.handleError(error: error)
-                break
-            }
-            
-            
-
+    public func saveValuesDefault() async{
+        Task{ @MainActor in
+            isLoading = true
         }
+        let result = await self.saveDefaultCategoriesUseCase.execute(categories: DefaultValues.defaultCategories )
+        
+        switch result {
+        case .success:
+            Task{ @MainActor in
+                self.isLoading = false
+            }
+            break
+        case .failure(let error):
+            self.handleError(error: error)
+            break
+        }
+        
         
     }
     
