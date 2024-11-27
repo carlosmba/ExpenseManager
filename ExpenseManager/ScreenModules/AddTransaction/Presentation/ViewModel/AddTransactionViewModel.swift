@@ -15,8 +15,10 @@ final class AddTransactionViewModel {
     var categorySelected : Int = 0
     var comment : String = ""
     var categories : [Category] = [Category]()
+    var initialCategories : [Category] = [Category]()
     var errorMessage : String?
     var isShowCategoryList = false
+    var hasAppeared = false
     
     private let getCategoriesByTypeUseCase : GetCategoriesByTypeUseCase
     private let errorMapper : ExpenseManagerPresentableErrorMapper
@@ -35,11 +37,13 @@ final class AddTransactionViewModel {
     }
     
     func getCategories(){
+        print("Obteniendo categorias")
         Task{
             let result = await getCategoriesByTypeUseCase.execute(type: transactionType.rawValue)
             switch result {
             case .success(let categories):
                 Task { @MainActor in
+                    self.initialCategories = Array(categories.prefix(7))
                     self.categories = categories
                 }
                 break

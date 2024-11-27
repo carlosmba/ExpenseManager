@@ -43,7 +43,7 @@ struct AddTransactionView: View {
                         .padding(.top, 10)
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4)){
-                        ForEach(viewModel.categories.prefix(7), id:\.id){ item in
+                        ForEach(viewModel.initialCategories, id:\.id){ item in
                             CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: viewModel.categorySelected == item.id)
                                 .onTapGesture {
                                     viewModel.categorySelected = item.id
@@ -54,7 +54,7 @@ struct AddTransactionView: View {
                                 .resizable()
                                 .foregroundStyle(.white)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 30)
+                                .frame(width: 25)
                                 .padding(15)
                                 .background(.gray)
                                 .clipShape(Circle())
@@ -86,7 +86,7 @@ struct AddTransactionView: View {
                     Spacer()
                 }
             }.navigationDestination(isPresented: $viewModel.isShowCategoryList){
-                CategoryListView(categories: viewModel.categories, categorySelected: $viewModel.categorySelected)
+                CategoryListView(initialCategories: $viewModel.initialCategories, categories: viewModel.categories, categorySelected: $viewModel.categorySelected, isShowCategoryList: $viewModel.isShowCategoryList)
             }
             
             
@@ -103,8 +103,13 @@ struct AddTransactionView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             })
         }.toolbarTitle(title: "Add Transaction")
+
         .onAppear{
-            viewModel.onAppears()
+            if !viewModel.hasAppeared{
+                viewModel.onAppears()
+                viewModel.hasAppeared.toggle()
+            }
+            
         }
     }
 }

@@ -28,7 +28,7 @@ struct CategoryItem: View {
                 .foregroundStyle(isSelected ? .white : .black)
                 .lineLimit(1)
         }
-        .padding()
+        .padding(5)
         .background(isSelected ? color : nil)
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }

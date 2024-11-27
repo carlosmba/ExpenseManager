@@ -8,18 +8,32 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    let categories : [Category] // Array de ejemplo con 30 elementos
+    @Binding var initialCategories : [Category]
+    let categories : [Category]
     let columns = 4
     @Binding var categorySelected : Int
+    @Binding var isShowCategoryList : Bool
     
     var body: some View {
         NavigationStack {
             ScrollView{
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: columns)){
-                    ForEach(categories, id: \.id) { item in
+                    ForEach(categories.indices, id: \.self) { index in
+                        let item = categories[index]
                         CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: item.id == categorySelected)
                             .onTapGesture {
+                                
+                                let itemAux = initialCategories.first{ aux in
+                                    aux.id == item.id
+                                }
+                                if (itemAux == nil){
+                                    initialCategories.removeLast()
+                                    initialCategories.insert(item, at: 0)
+                                    
+                                }
+                                
                                 categorySelected = item.id
+                                isShowCategoryList.toggle()
                             }
                         
                     }
