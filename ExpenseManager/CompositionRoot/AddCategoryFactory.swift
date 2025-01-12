@@ -7,11 +7,11 @@
 
 import Foundation
 protocol AddCategoryFactory {
-    func create(typeTransaction : TransactionType) -> AddCategoryView
+    static func create(typeTransaction : TransactionType) -> AddCategoryView
 }
 
 final class AddCategoryFactoryImpl : AddCategoryFactory{
-    func create(typeTransaction : TransactionType) -> AddCategoryView {
+    static func create(typeTransaction : TransactionType) -> AddCategoryView {
         let local = SwiftDataContainer.shared
         let datasource = LocalCategoryDataSourceImpl(localPersistence: local)
         let mapper = CategoryMapper()

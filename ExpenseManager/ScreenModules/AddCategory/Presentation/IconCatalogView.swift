@@ -35,7 +35,6 @@ struct IconCatalogView: View {
     let rows : Int = 2
     let columns : Int = 4
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading){
                     Text("Comercio:")
@@ -78,7 +77,7 @@ struct IconCatalogView: View {
                 .toolbarBackground(ColorScheme.primary)
                 .toolbarBackground(.visible, for: .navigationBar)
             .navigationTitle("Icons")
-        }
+        
         
     }
 }

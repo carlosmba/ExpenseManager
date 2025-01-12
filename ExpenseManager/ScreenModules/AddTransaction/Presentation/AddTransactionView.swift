@@ -73,25 +73,16 @@ struct AddTransactionView: View {
                     TextEditor(text: $viewModel.comment)
                         .scrollDisabled(true)
                                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(.gray))
-                                    
-                     
-                        
-                        
-                    
-                    
-                    
-                    
-                    
-                    
+ 
                     Spacer()
                 }
             }.navigationDestination(isPresented: $viewModel.isShowCategoryList){
-                CategoryListView(initialCategories: $viewModel.initialCategories, categories: viewModel.categories, categorySelected: $viewModel.categorySelected, isShowCategoryList: $viewModel.isShowCategoryList)
+                CategoryListView(initialCategories: $viewModel.initialCategories, categories: viewModel.categories, categorySelected: $viewModel.categorySelected, isShowCategoryList: $viewModel.isShowCategoryList, isItemCategoryListSelected: $viewModel.isItemCategoryListSelected)
             }
             
             
             Button(action: {
-               
+               print("Creando transaccion")
             }, label: {
                 Text("Crear")
                     .fontWeight(.heavy)
@@ -101,7 +92,9 @@ struct AddTransactionView: View {
                     .foregroundStyle(.white)
                     .background(.yellow)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
             })
+            .disabled(viewModel.isDisableButton)
         }.toolbarTitle(title: "Add Transaction")
 
         .onAppear{

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C010A9E2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */; };
+		0C0E402D2D346D8100F4A54F /* CreateTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E402C2D346D8100F4A54F /* CreateTransactionUseCase.swift */; };
 		0C1D899F2C4C083E00AC8271 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D899E2C4C083E00AC8271 /* HomeView.swift */; };
 		0C1D89A52C4C14F500AC8271 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */; };
 		0C1D89A72C4C150400AC8271 /* IncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D89A62C4C150400AC8271 /* IncomeView.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesByTypeUseCase.swift; sourceTree = "<group>"; };
+		0C0E402C2D346D8100F4A54F /* CreateTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionUseCase.swift; sourceTree = "<group>"; };
 		0C1D899E2C4C083E00AC8271 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
 		0C1D89A62C4C150400AC8271 /* IncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */,
+				0C0E402C2D346D8100F4A54F /* CreateTransactionUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				0C5463472C5DD12C005F47DD /* HTTPClient.swift in Sources */,
 				0CE4738C2CBA9C1500F7166A /* CategoryListView.swift in Sources */,
 				0CBAF3412C5B360F00152CA5 /* APITransactionDataSource.swift in Sources */,
+				0C0E402D2D346D8100F4A54F /* CreateTransactionUseCase.swift in Sources */,
 				0CD9C8CD2C6676FD005AA343 /* CategoryDAO.swift in Sources */,
 				0CE5268E2C6FC83D00452D01 /* AddCategoryView.swift in Sources */,
 				0CFDDE632C70FC83001ACC4C /* LocalCategoryDataSource.swift in Sources */,

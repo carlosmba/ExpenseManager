@@ -13,9 +13,10 @@ struct CategoryListView: View {
     let columns = 4
     @Binding var categorySelected : Int
     @Binding var isShowCategoryList : Bool
+    @Binding var isItemCategoryListSelected : Bool
+    @State var isShowCreateCategory : Bool  = false
     
     var body: some View {
-        NavigationStack {
             ScrollView{
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: columns)){
                     ForEach(categories.indices, id: \.self) { index in
@@ -27,9 +28,9 @@ struct CategoryListView: View {
                                     aux.id == item.id
                                 }
                                 if (itemAux == nil){
-                                    initialCategories.removeLast()
+                                    if (isItemCategoryListSelected){initialCategories.removeFirst()} else{ initialCategories.removeLast()}
                                     initialCategories.insert(item, at: 0)
-                                    
+                                    isItemCategoryListSelected = true
                                 }
                                 
                                 categorySelected = item.id
@@ -37,9 +38,30 @@ struct CategoryListView: View {
                             }
                         
                     }
+                    
+                    VStack(alignment: .center){
+                        Image(systemName: "plus")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25)
+                            .padding(15)
+                            .background(.gray)
+                            .clipShape(Circle())
+                        Text("Crear")
+                            .foregroundStyle(.black)
+                    }
+                    .padding()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onTapGesture {
+                        self.isShowCreateCategory.toggle()
+                    }
                 }
             }.toolbarTitle(title: "Categorias")
-        }
+                .navigationDestination(isPresented: self.$isShowCreateCategory){
+                    AddCategoryFactoryImpl.create(typeTransaction: .expense)
+                }
+        
     }
     
 }

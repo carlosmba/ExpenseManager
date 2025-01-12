@@ -25,6 +25,6 @@ extension Color {
                     let g = components[1]
                     let b = components[2]
                     let a = components[3]
-                    return String(format: "%02X%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255), Int(a * 255))
+            return String(format: "%02lX%02lX%02lX", Int(r * 255), Int(g * 255), Int(b * 255), Int(a * 255))
         }
 }

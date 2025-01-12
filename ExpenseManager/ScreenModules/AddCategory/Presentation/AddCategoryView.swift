@@ -16,7 +16,6 @@ struct AddCategoryView: View {
     }
     
     var body: some View {
-        NavigationStack{
             VStack{
                 
                 VStack(alignment: .leading){
@@ -88,7 +87,7 @@ struct AddCategoryView: View {
                 }
                 
                 ColorPicker("Seleccionar Color:", selection: $viewModel.colorSelected)
-                Text(viewModel.colorSelected.description)
+                Text(viewModel.colorSelected.toString())
                 
                 
             
@@ -123,11 +122,11 @@ struct AddCategoryView: View {
             .toolbarBackground(.blue)
             .toolbarBackground(.visible, for: .navigationBar)
             .navigationTitle("Add Category")
-        }
+        
         
     }
 }
 
-#Preview {
+/*#Preview {
     AddCategoryFactoryImpl().create(typeTransaction: .expense)
-}
+}*/

@@ -19,7 +19,7 @@ struct CategoryItem: View {
                 .resizable()
                 .foregroundStyle(.white)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 30)
+                .frame(width: 30, height: 30)
                 .padding(15)
                 .background(color)
                 .clipShape(Circle())
@@ -35,5 +35,5 @@ struct CategoryItem: View {
 }
 
 #Preview {
-    CategoryItem(imageSystemName: "house", name: "Casa", color: .red, isSelected: true)
+    CategoryItem(imageSystemName: "phone", name: "Casa", color: .red, isSelected: true)
 }
