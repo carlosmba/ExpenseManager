@@ -8,33 +8,30 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    @Binding var initialCategories : [Category]
-    let categories : [Category]
     let columns = 4
     @Binding var categorySelected : Int
-    @Binding var isShowCategoryList : Bool
-    @Binding var isItemCategoryListSelected : Bool
-    @State var isShowCreateCategory : Bool  = false
+    @Binding var categoryViewModel : CategoryViewModel
+    
     
     var body: some View {
             ScrollView{
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: columns)){
-                    ForEach(categories.indices, id: \.self) { index in
-                        let item = categories[index]
+                    ForEach(categoryViewModel.categories.indices, id: \.self) { index in
+                        let item = categoryViewModel.categories[index]
                         CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: item.id == categorySelected)
                             .onTapGesture {
                                 
-                                let itemAux = initialCategories.first{ aux in
+                                let itemAux = categoryViewModel.initialCategories.first{ aux in
                                     aux.id == item.id
                                 }
                                 if (itemAux == nil){
-                                    if (isItemCategoryListSelected){initialCategories.removeFirst()} else{ initialCategories.removeLast()}
-                                    initialCategories.insert(item, at: 0)
-                                    isItemCategoryListSelected = true
+                                    if (categoryViewModel.isItemCategoryListSelected){categoryViewModel.initialCategories.removeFirst()} else{ categoryViewModel.initialCategories.removeLast()}
+                                    categoryViewModel.initialCategories.insert(item, at: 0)
+                                    categoryViewModel.isItemCategoryListSelected = true
                                 }
                                 
                                 categorySelected = item.id
-                                isShowCategoryList.toggle()
+                                categoryViewModel.isShowCategoryList.toggle()
                             }
                         
                     }
@@ -54,11 +51,11 @@ struct CategoryListView: View {
                     .padding()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .onTapGesture {
-                        self.isShowCreateCategory.toggle()
+                        categoryViewModel.isShowCreateCategory.toggle()
                     }
                 }
             }.toolbarTitle(title: "Categorias")
-                .navigationDestination(isPresented: self.$isShowCreateCategory){
+            .navigationDestination(isPresented: $categoryViewModel.isShowCreateCategory){
                     AddCategoryFactoryImpl.create(typeTransaction: .expense)
                 }
         

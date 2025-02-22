@@ -14,8 +14,7 @@ final class AddTransactionViewModel {
     let initType : TransactionType
     var categorySelected : Int = 0
     var comment : String = ""
-    var categories : [Category] = [Category]()
-    var initialCategories : [Category] = [Category]()
+    
     var errorMessage : String?
     var isShowCategoryList = false
     var hasAppeared = false
@@ -25,43 +24,25 @@ final class AddTransactionViewModel {
         amount != 0 && categorySelected != 0
     }
     
-    private let getCategoriesByTypeUseCase : GetCategoriesByTypeUseCase
     
     private let errorMapper : ExpenseManagerPresentableErrorMapper
     
-    init(type : TransactionType, getCategoriesByType : GetCategoriesByTypeUseCase, errorMapper : ExpenseManagerPresentableErrorMapper) {
+    init(type : TransactionType,errorMapper : ExpenseManagerPresentableErrorMapper) {
         self.transactionType = type
         self.initType = type
-        self.getCategoriesByTypeUseCase = getCategoriesByType
         self.errorMapper = errorMapper
         
     }
     
     func onAppears(){
         self.transactionType = initType
-        getCategories()
     }
     
     func createNewTransaction(){
         
     }
     
-    func getCategories(){
-        Task{
-            let result = await getCategoriesByTypeUseCase.execute(type: transactionType.rawValue)
-            switch result {
-            case .success(let categories):
-                Task { @MainActor in
-                    self.initialCategories = Array(categories.prefix(7))
-                    self.categories = categories
-                }
-                break
-            case .failure(let error):
-                handleError(error: error)
-                break
-            }
-        }
-    }
+    
     
     
     func handleError(error : ExpenseManagerErrorDomain){

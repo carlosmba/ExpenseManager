@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C010A9E2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */; };
+		0C059CB72D6A42A4006E6AFA /* AddTransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059CB62D6A42A4006E6AFA /* AddTransactionFactory.swift */; };
 		0C0E402D2D346D8100F4A54F /* CreateTransactionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E402C2D346D8100F4A54F /* CreateTransactionUseCase.swift */; };
 		0C1D899F2C4C083E00AC8271 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D899E2C4C083E00AC8271 /* HomeView.swift */; };
 		0C1D89A52C4C14F500AC8271 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */; };
@@ -57,7 +58,7 @@
 		0CDA46282C76CD0000E936B1 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA46272C76CD0000E936B1 /* CategoryRepository.swift */; };
 		0CDA462A2C76CD1000E936B1 /* CategoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA46292C76CD1000E936B1 /* CategoryRepositoryImpl.swift */; };
 		0CDC84092CB952FF00294D64 /* AddCategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC84082CB952FF00294D64 /* AddCategoryFactory.swift */; };
-		0CDC840B2CB953D300294D64 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC840A2CB953D300294D64 /* AddCategoryViewModel.swift */; };
+		0CDC840B2CB953D300294D64 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC840A2CB953D300294D64 /* CategoryViewModel.swift */; };
 		0CDC840E2CB9629D00294D64 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */; };
 		0CE076FE2CAA0D4A006C6019 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */; };
 		0CE077022CAA1EA3006C6019 /* CreateCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		0C010A9D2CDBCE7F00CDDF37 /* GetCategoriesByTypeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesByTypeUseCase.swift; sourceTree = "<group>"; };
+		0C059CB62D6A42A4006E6AFA /* AddTransactionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionFactory.swift; sourceTree = "<group>"; };
 		0C0E402C2D346D8100F4A54F /* CreateTransactionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionUseCase.swift; sourceTree = "<group>"; };
 		0C1D899E2C4C083E00AC8271 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0C1D89A42C4C14F500AC8271 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		0CDA46272C76CD0000E936B1 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
 		0CDA46292C76CD1000E936B1 /* CategoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositoryImpl.swift; sourceTree = "<group>"; };
 		0CDC84082CB952FF00294D64 /* AddCategoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryFactory.swift; sourceTree = "<group>"; };
-		0CDC840A2CB953D300294D64 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
+		0CDC840A2CB953D300294D64 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		0CDC840D2CB9629D00294D64 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		0CE076FD2CAA0D4A006C6019 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		0CE077012CAA1EA3006C6019 /* CreateCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryUseCase.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				0CDC84082CB952FF00294D64 /* AddCategoryFactory.swift */,
+				0C059CB62D6A42A4006E6AFA /* AddTransactionFactory.swift */,
 			);
 			path = CompositionRoot;
 			sourceTree = "<group>";
@@ -590,7 +593,7 @@
 		0CE076FF2CAA1E7C006C6019 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0CDC840A2CB953D300294D64 /* AddCategoryViewModel.swift */,
+				0CDC840A2CB953D300294D64 /* CategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				0C54634A2C5DD1D2005F47DD /* TransactionDTO.swift in Sources */,
 				0C5C51F52C855611008C1C6C /* CategorySymbol.swift in Sources */,
 				0C1E7ED52C5BE28D00811D3C /* TransactionModel.swift in Sources */,
+				0C059CB72D6A42A4006E6AFA /* AddTransactionFactory.swift in Sources */,
 				0C2A8BB02C4581BE007EE81B /* LoginView.swift in Sources */,
 				0C3507742CC3F29200D450F9 /* LoginViewModel.swift in Sources */,
 				0C54634C2C5DD22E005F47DD /* TransactionDAO.swift in Sources */,
@@ -801,7 +805,7 @@
 				0CC916A62C52E74200BECC03 /* TransactionRow.swift in Sources */,
 				0C1E7ED22C5BE24100811D3C /* LocalPersistenceError.swift in Sources */,
 				0C4563862C49B05F00BB52D2 /* CustomSecureTextField.swift in Sources */,
-				0CDC840B2CB953D300294D64 /* AddCategoryViewModel.swift in Sources */,
+				0CDC840B2CB953D300294D64 /* CategoryViewModel.swift in Sources */,
 				0C1D89A52C4C14F500AC8271 /* ExpenseView.swift in Sources */,
 				0C45638A2C4A0AA000BB52D2 /* RegisterViewModel.swift in Sources */,
 				0C4563842C49AB0400BB52D2 /* CustomTextField.swift in Sources */,

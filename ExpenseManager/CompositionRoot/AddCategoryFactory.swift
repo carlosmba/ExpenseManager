@@ -15,9 +15,11 @@ final class AddCategoryFactoryImpl : AddCategoryFactory{
         let local = SwiftDataContainer.shared
         let datasource = LocalCategoryDataSourceImpl(localPersistence: local)
         let mapper = CategoryMapper()
+        let errorMapper = ExpenseManagerPresentableErrorMapper()
         let repository = CategoryRepositoryImpl(localCategoryDataSource: datasource, mapper: mapper)
         let createCategoryUseCase = CreateCategoryUseCaseImpl(categoryRepository: repository)
-        let viewModel = AddCategoryViewModel(typeTransaction: typeTransaction, createCategoryUseCase: createCategoryUseCase)
+        let getCategoriesByType = GetCategoriesByTypeUseCaseImpl(categoryRepository: repository)
+        let viewModel = CategoryViewModel(typeTransaction: typeTransaction, createCategoryUseCase: createCategoryUseCase, getCategoriesUseCase: getCategoriesByType, errorMapper: errorMapper)
         let view = AddCategoryView(viewModel: viewModel)
         return view
     }

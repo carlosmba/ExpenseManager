@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct AddCategoryView: View {
-    @State private var viewModel : AddCategoryViewModel
+    @State var viewModel : CategoryViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    init(viewModel: AddCategoryViewModel) {
-        self._viewModel = State(initialValue: viewModel)
-    }
-    
+        
     var body: some View {
             VStack{
                 

@@ -12,9 +12,11 @@ import SwiftUI
 struct AddTransactionView: View {
     
     @State private var viewModel : AddTransactionViewModel
+    @State private var categoryViewModel : CategoryViewModel
     
-    init(viewModel: AddTransactionViewModel) {
+    init(viewModel: AddTransactionViewModel, categoryViewModel : CategoryViewModel) {
         self.viewModel = viewModel
+        self.categoryViewModel = categoryViewModel
     }
     
     var body: some View {
@@ -26,7 +28,7 @@ struct AddTransactionView: View {
                         Text("Expenses").tag(TransactionType.expense)
                     }.pickerStyle(.segmented)
                         .onChange(of: viewModel.transactionType, initial: false ){
-                            viewModel.getCategories()
+                            categoryViewModel.getCategories(viewModel.transactionType)
                         }
                     Text("Cuenta").foregroundStyle(.gray)
                         .padding(.top, 10)
@@ -43,7 +45,7 @@ struct AddTransactionView: View {
                         .padding(.top, 10)
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4)){
-                        ForEach(viewModel.initialCategories, id:\.id){ item in
+                        ForEach(categoryViewModel.initialCategories, id:\.id){ item in
                             CategoryItem(imageSystemName: item.image, name: item.name, color: item.colorSwift, isSelected: viewModel.categorySelected == item.id)
                                 .onTapGesture {
                                     viewModel.categorySelected = item.id
@@ -77,7 +79,7 @@ struct AddTransactionView: View {
                     Spacer()
                 }
             }.navigationDestination(isPresented: $viewModel.isShowCategoryList){
-                CategoryListView(initialCategories: $viewModel.initialCategories, categories: viewModel.categories, categorySelected: $viewModel.categorySelected, isShowCategoryList: $viewModel.isShowCategoryList, isItemCategoryListSelected: $viewModel.isItemCategoryListSelected)
+                CategoryListView(categorySelected: $viewModel.categorySelected, categoryViewModel: $categoryViewModel)
             }
             
             
@@ -108,5 +110,5 @@ struct AddTransactionView: View {
 }
 
 #Preview {
-    AddTransactionView(viewModel: AddTransactionViewModel(type: .expense, getCategoriesByType: GetCategoriesByTypeUseCaseImpl(categoryRepository: CategoryRepositoryImpl(localCategoryDataSource: LocalCategoryDataSourceImpl(localPersistence: SwiftDataContainer.shared), mapper: CategoryMapper())), errorMapper: ExpenseManagerPresentableErrorMapper()))
+    AddTransactionFactoryImpl.create(type: .income)
 }
